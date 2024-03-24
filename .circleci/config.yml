@@ -3,8 +3,8 @@ version: 2.1
 jobs:
   build:
     machine:
-      image: windows-server-2019-nvidia:stable
-      resource_class: windows.gpu.nvidia.medium
+      image: 'windows-server-2022-gui:current'
+      resource_class: windows.large
       shell: powershell.exe -ExecutionPolicy Bypass
     steps:
       - run: |
